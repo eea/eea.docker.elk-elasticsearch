@@ -24,7 +24,7 @@
       #KIBANA_RO_PASSWORD: changeme
 
   logstash:
-    image: logstash:5.1.2
+    image: logstash
     volumes:
       - logstashConfig:/etc/logstash/conf.d
       - /backups:/backups
