@@ -7,12 +7,6 @@ if [ "${1:0:1}" = '-' ]; then
 	set -- elasticsearch "$@"
 fi
 
-if [ "$ENABLE_CORS" = "YES" ]           
-then
-  echo "server.cors: true" >> /usr/share/elasticsearch/config/elasticsearch.yml
-  echo "server.cors.origin: ['*']" >> /usr/share/elasticsearch/config/elasticsearch.yml
-fi
-
 # Drop root privileges if we are running elasticsearch
 # allow the container to be started with `--user`
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
