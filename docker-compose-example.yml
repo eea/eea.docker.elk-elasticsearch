@@ -1,0 +1,74 @@
+#version: '2'
+
+#services:
+  elasticsearch:
+    build: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearchData:/usr/share/elasticsearch/data
+      - /backups:/backups
+
+    environment:
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+      LOGSTASH_RW_USERNAME: changeme
+      LOGSTASH_RW_PASSWORD: changeme
+
+      #must match below!
+      KIBANA_RW_USERNAME: changeme
+      KIBANA_RW_PASSWORD: changeme
+
+      #in case you don't want public read only access, uncommend and set
+      #KIBANA_RO_USERNAME: changeme
+      #KIBANA_RO_PASSWORD: changeme
+
+  logstash:
+    image: logstash:5.1.2
+    volumes:
+      - logstashConfig:/etc/logstash/conf.d
+      - /backups:/backups
+    ports:
+      - "5001:5000"
+    links:
+      - elasticsearch:elasticsearch
+
+  kibana:
+    build: kibana
+    ports:
+      - "5601:5601"
+    volumes:
+      - /backups:/backups
+    links:
+      - elasticsearch:elasticsearch
+    environment:
+      #must match above!
+      KIBANA_RW_USERNAME: changeme
+      KIBANA_RW_PASSWORD: changeme
+      ENABLE_CORS: changeme
+      ENABLE_SSL: changeme
+    
+    SSL_KEY: |-
+        -----BEGIN RSA PRIVATE KEY-----
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        -----END RSA PRIVATE KEY-----
+
+    SSL_CERT: |-
+        -----BEGIN CERTIFICATE-----
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        -----END CERTIFICATE-----
+
+    AUTH_CERT: |-
+        -----BEGIN CERTIFICATE-----
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        changemechangemechangemechangemechangemechangemechangemechangeme
+        -----END CERTIFICATE-----
+

@@ -1,0 +1,35 @@
+http.host: 0.0.0.0
+
+# Uncomment the following lines for a production cluster deployment
+#transport.host: 0.0.0.0
+#discovery.zen.minimum_master_nodes: 1
+
+readonlyrest:
+    enable: true
+    ssl:
+      enable: true
+      keystore_file: "/usr/share/elasticsearch/plugins/readonlyrest/keystore.jks"
+      keystore_pass: readonlyrest
+      key_pass: readonlyrest
+
+    response_if_req_forbidden: Not authorized
+
+    access_control_rules:
+
+    - name: Accept all requests from localhost
+      type: allow
+      hosts: [127.0.0.1, localhost, xx.xx.xx.xx]
+
+    - name: Logstash RW
+      auth_key: LOGSTASH_RW_USERNAME:LOGSTASH_RW_PASSWORD
+      type: allow
+
+    - name: Kibana RW
+      auth_key: KIBANA_RW_USERNAME:KIBANA_RW_PASSWORD
+      type: allow
+
+    - name: Kibana RO
+      #-RO-auth_key: KIBANA_RO_USERNAME:KIBANA_RO_PASSWORD
+      type: allow
+      kibana_access: ro
+      indices: ["*"]
