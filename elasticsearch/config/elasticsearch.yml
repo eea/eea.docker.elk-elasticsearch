@@ -4,13 +4,18 @@ http.host: 0.0.0.0
 #transport.host: 0.0.0.0
 #discovery.zen.minimum_master_nodes: 1
 
+#http.cors.enabled : true
+#http.cors.allow-origin: "*"
+#http.cors.allow-methods : OPTIONS, HEAD, GET, POST, PUT, DELETE
+#http.cors.allow-headers : "X-Requested-With,X-Auth-Token,Content-Type, Content-Length, Authorization"
+
 readonlyrest:
     enable: true
-    ssl:
-      enable: true
-      keystore_file: "/usr/share/elasticsearch/plugins/readonlyrest/keystore.jks"
-      keystore_pass: readonlyrest
-      key_pass: readonlyrest
+#    ssl:
+#      enable: true
+#      keystore_file: "/usr/share/elasticsearch/plugins/readonlyrest/keystore.jks"
+#      keystore_pass: readonlyrest
+#      key_pass: readonlyrest
 
     response_if_req_forbidden: Not authorized
 

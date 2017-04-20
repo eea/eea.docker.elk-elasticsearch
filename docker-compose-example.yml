@@ -18,8 +18,7 @@
       #must match below!
       KIBANA_RW_USERNAME: changeme
       KIBANA_RW_PASSWORD: changeme
-
-      ENABLE_CORS: changeme
+      ENABLE_SSL: changeme
 
       #in case you don't want public read only access, uncommend and set
       #KIBANA_RO_USERNAME: changeme
