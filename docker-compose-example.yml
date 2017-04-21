@@ -46,7 +46,6 @@
       #must match above!
       KIBANA_RW_USERNAME: changeme
       KIBANA_RW_PASSWORD: changeme
-      ENABLE_CORS: changeme
       ENABLE_SSL: changeme
     
     SSL_KEY: |-
