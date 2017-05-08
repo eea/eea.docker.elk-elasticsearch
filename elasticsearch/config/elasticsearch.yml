@@ -19,6 +19,8 @@ readonlyrest:
 
     response_if_req_forbidden: Not authorized
 
+    #rest.action.multi.allow_explicit_index: false
+
     access_control_rules:
 
     - name: Accept all requests from localhost
