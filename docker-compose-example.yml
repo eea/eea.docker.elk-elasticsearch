@@ -10,7 +10,7 @@
       - elasticsearchData:/usr/share/elasticsearch/data
       - /backups:/backups
 
-    environment:
+    environment: 
       ES_JAVA_OPTS: "-Xms1g -Xmx1g"
       LOGSTASH_RW_USERNAME: changeme
       LOGSTASH_RW_PASSWORD: changeme
