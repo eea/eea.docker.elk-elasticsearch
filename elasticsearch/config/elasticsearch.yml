@@ -9,6 +9,8 @@ http.host: 0.0.0.0
 #http.cors.allow-methods : OPTIONS, HEAD, GET, POST, PUT, DELETE
 #http.cors.allow-headers : "X-Requested-With,X-Auth-Token,Content-Type, Content-Length, Authorization"
 
+rest.action.multi.allow_explicit_index: false
+
 readonlyrest:
     enable: true
 #    ssl:
@@ -25,7 +27,7 @@ readonlyrest:
 
     - name: Accept all requests from localhost
       type: allow
-      hosts: [127.0.0.1, localhost, xx.xx.xx.xx]
+      hosts: [127.0.0.1, localhost]
 
     - name: Logstash RW
       auth_key: LOGSTASH_RW_USERNAME:LOGSTASH_RW_PASSWORD
