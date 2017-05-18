@@ -9,7 +9,7 @@ http.host: 0.0.0.0
 #http.cors.allow-methods : OPTIONS, HEAD, GET, POST, PUT, DELETE
 #http.cors.allow-headers : "X-Requested-With,X-Auth-Token,Content-Type, Content-Length, Authorization"
 
-rest.action.multi.allow_explicit_index: false
+#rest.action.multi.allow_explicit_index: false
 
 readonlyrest:
     enable: true
