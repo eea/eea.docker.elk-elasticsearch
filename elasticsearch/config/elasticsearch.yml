@@ -11,13 +11,14 @@ http.host: 0.0.0.0
 
 #rest.action.multi.allow_explicit_index: false
 
+http.type: ssl_netty4
 readonlyrest:
     enable: true
-#    ssl:
-#      enable: true
-#      keystore_file: "/usr/share/elasticsearch/plugins/readonlyrest/keystore.jks"
-#      keystore_pass: readonlyrest
-#      key_pass: readonlyrest
+    ssl:
+      enable: true
+      keystore_file: "/tmp/ssl/self.jks"
+      keystore_pass: KIBANA_RW_PASSWORD
+      key_pass: KIBANA_RW_PASSWORD
 
     response_if_req_forbidden: Not authorized
 
@@ -28,17 +29,34 @@ readonlyrest:
     - name: Accept all requests from localhost
       type: allow
       hosts: [127.0.0.1, localhost]
+      verbosity: info
+
+    - name: Check_mk
+      type: allow
+      #hosts: ["kvm-cph-06.eea.eu.int", "10.92.27.0/32", "10.92.27.0/24"]
+      #hosts: [10.92.25.135, 10.92.27.0/0]
+      #hosts: [eye.eea.eu.int, 10.92.27.0/24]
+      #hosts: [10.92.27.135, 10.92.26.26]
+      hosts: [CHECKHEALTH]
+      #hosts: ["eye.eea.eu.int", "blackeye.eea.europa.eu", "10.92.27.0/24"]
+      actions: ["cluster:monitor/health"]
+      verbosity: info
+      #hosts: [kvm-cph-06.eea.eu.int, 10.92.26.26, 10.92.27.135, 10.92.27.158, 10.92.27.167]
 
     - name: Logstash RW
       auth_key: LOGSTASH_RW_USERNAME:LOGSTASH_RW_PASSWORD
       type: allow
+      verbosity: info
 
     - name: Kibana RW
       auth_key: KIBANA_RW_USERNAME:KIBANA_RW_PASSWORD
       type: allow
+      verbosity: info
 
     - name: Kibana RO
       #-RO-auth_key: KIBANA_RO_USERNAME:KIBANA_RO_PASSWORD
       type: allow
       kibana_access: ro
       indices: ["*"]
+      hosts: [10.92.27.135]
+      verbosity: info

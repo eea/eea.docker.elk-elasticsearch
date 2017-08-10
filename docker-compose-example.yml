@@ -19,7 +19,7 @@
       KIBANA_RW_USERNAME: changeme
       KIBANA_RW_PASSWORD: changeme
       ENABLE_SSL: changeme
-
+      CHECKHEALTH: "ip1, ip2" #set to 127.0.0.1 to void it
       #in case you don't want public read only access, uncommend and set
       #KIBANA_RO_USERNAME: changeme
       #KIBANA_RO_PASSWORD: changeme
@@ -48,27 +48,3 @@
       KIBANA_RW_PASSWORD: changeme
       ENABLE_SSL: changeme
     
-    SSL_KEY: |-
-        -----BEGIN RSA PRIVATE KEY-----
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        -----END RSA PRIVATE KEY-----
-
-    SSL_CERT: |-
-        -----BEGIN CERTIFICATE-----
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        -----END CERTIFICATE-----
-
-    AUTH_CERT: |-
-        -----BEGIN CERTIFICATE-----
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        changemechangemechangemechangemechangemechangemechangemechangeme
-        -----END CERTIFICATE-----
-
