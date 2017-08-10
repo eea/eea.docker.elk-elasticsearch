@@ -45,7 +45,7 @@ readonlyrest:
       auth_key: KIBANA_RW_USERNAME:KIBANA_RW_PASSWORD
       type: allow
       hosts: [192.168.0.0/16]
-      indices: [".kibana"]
+      indices: ["*"]
 
     - name: Kibana RO
       #-RO-auth_key: KIBANA_RO_USERNAME:KIBANA_RO_PASSWORD

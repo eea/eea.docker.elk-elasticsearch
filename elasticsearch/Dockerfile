@@ -13,6 +13,7 @@ USER root
 COPY docker-entrypoint.sh /
 RUN chmod a+x /docker-entrypoint.sh
 
+RUN yum install -y openssl
 USER elasticsearch
 
 EXPOSE 9200 9300
