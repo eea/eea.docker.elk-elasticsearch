@@ -7,6 +7,7 @@ if [ "${1:0:1}" = '-' ]; then
 	set -- elasticsearch "$@"
 fi
 
+rm -rf /tmp/ssl
 mkdir -p /tmp/ssl
 keytool -genkey -keyalg RSA -noprompt -alias $SERVERNAME -dname "CN=$SERVERNAME,OU=IDM,O=EEA,L=IDM1,C=DK" -keystore /tmp/ssl/self.jks -storepass $KIBANA_RW_PASSWORD -keypass $KIBANA_RW_PASSWORD
 keytool -keystore  /tmp/ssl/self.jks -alias $SERVERNAME -export -file  /tmp/ssl/self.cert
