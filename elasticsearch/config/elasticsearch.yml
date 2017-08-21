@@ -49,10 +49,10 @@ readonlyrest:
       indices: [".kibana"]
       verbosity: info
 
-    #- name: Kibana RO
-    #  #-RO-auth_key: KIBANA_RO_USERNAME:KIBANA_RO_PASSWORD
-    #  type: allow
-    #  kibana_access: ro
-    #  indices: ["*"]
-    #  verbosity: info
-    #  #hosts: [10.92.27.135]
+    - name: Kibana RO
+      #-RO-auth_key: KIBANA_RO_USERNAME:KIBANA_RO_PASSWORD
+      type: allow
+      kibana_access: ro
+      indices: [".kibana"]
+      verbosity: info
+      #hosts: [10.92.27.135]
