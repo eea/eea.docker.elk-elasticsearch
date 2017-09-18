@@ -16,7 +16,7 @@ readonlyrest:
     - name: Accept all requests from localhost
       type: allow
       hosts: [127.0.0.1, localhost]
-      verbosity: info
+      #verbosity: info
 
     - name: Check_mk
       type: allow
@@ -35,7 +35,7 @@ readonlyrest:
       type: allow
       hosts: [192.168.0.0/16]
       indices: [".kibana"]
-      verbosity: info
+      #verbosity: info
 
     - name: Kibana RO
       #-RO-auth_key: KIBANA_RO_USERNAME:KIBANA_RO_PASSWORD
