@@ -4,10 +4,11 @@ MAINTAINER michimau <mauro.michielon@eea.europa.eu>
 
 RUN /usr/share/elasticsearch/bin/elasticsearch-plugin remove x-pack
 
-COPY readonlyrest-1.16.9_es5.4.1.zip .
-RUN bin/elasticsearch-plugin install file:/usr/share/elasticsearch/readonlyrest-1.16.9_es5.4.1.zip
+COPY readonlyrest-1.16.9_es5.4.1.zip ./readonlyrest.zip
+#RUN bin/elasticsearch-plugin install file:/usr/share/elasticsearch/readonlyrest-1.16.9_es5.4.1.zip
 
-COPY /config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml 
+#COPY /config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml 
+COPY /config/readonlyrest.yml /readonlyrest.yml
 
 USER root
 COPY docker-entrypoint.sh /

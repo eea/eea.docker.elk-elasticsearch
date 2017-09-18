@@ -1,0 +1,46 @@
+http.type: ssl_netty4
+readonlyrest:
+    enable: true
+    ssl:
+      enable: true
+      keystore_file: "/tmp/ssl/self.jks"
+      keystore_pass: KIBANA_RW_PASSWORD
+      key_pass: KIBANA_RW_PASSWORD
+
+    response_if_req_forbidden: Not authorized
+
+    #rest.action.multi.allow_explicit_index: false
+
+    access_control_rules:
+
+    - name: Accept all requests from localhost
+      type: allow
+      hosts: [127.0.0.1, localhost]
+      verbosity: info
+
+    - name: Check_mk
+      type: allow
+      hosts: [CHECKHEALTH]
+      actions: ["cluster:monitor/health"]
+
+    - name: Logstash RW
+      auth_key: LOGSTASH_RW_USERNAME:LOGSTASH_RW_PASSWORD
+      type: allow
+      hosts: [172.0.0.0/6]
+      #hosts: [172.17.0.0/16]
+      verbosity: info
+
+    - name: Kibana RW
+      auth_key: KIBANA_RW_USERNAME:KIBANA_RW_PASSWORD
+      type: allow
+      hosts: [192.168.0.0/16]
+      indices: [".kibana"]
+      verbosity: info
+
+    - name: Kibana RO
+      #-RO-auth_key: KIBANA_RO_USERNAME:KIBANA_RO_PASSWORD
+      type: allow
+      kibana_access: ro_strict
+      #indices: [".kibana"]
+      verbosity: info
+      #hosts: [10.92.27.135]
