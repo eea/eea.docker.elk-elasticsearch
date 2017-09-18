@@ -28,7 +28,7 @@ readonlyrest:
       type: allow
       hosts: [172.0.0.0/6]
       #hosts: [172.17.0.0/16]
-      verbosity: info
+      #verbosity: info
 
     - name: Kibana RW
       auth_key: KIBANA_RW_USERNAME:KIBANA_RW_PASSWORD
@@ -42,5 +42,5 @@ readonlyrest:
       type: allow
       kibana_access: ro_strict
       #indices: [".kibana"]
-      verbosity: info
+      #verbosity: info
       #hosts: [10.92.27.135]
