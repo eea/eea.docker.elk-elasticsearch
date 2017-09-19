@@ -7,10 +7,19 @@ if [ "${1:0:1}" = '-' ]; then
 	set -- elasticsearch "$@"
 fi
 
+cp /elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
+
 if [ $ELASTICSEARCH_MASTER = "YES" ]
 then
+  
   cat /readonlyrest.yml >> /usr/share/elasticsearch/config/elasticsearch.yml
-  bin/elasticsearch-plugin install file:/usr/share/elasticsearch/readonlyrest.zip
+
+  export TESTREADONLYREST=$(/usr/share/elasticsearch/bin/elasticsearch-plugin list | grep readonlyrest)
+  if [ -z "$TESTREADONLYREST" ]
+  then
+    bin/elasticsearch-plugin install file:/usr/share/elasticsearch/readonlyrest.zip
+  fi
+  export TESTREADONLYREST=''
 
   rm -rf /tmp/ssl
   mkdir -p /tmp/ssl
