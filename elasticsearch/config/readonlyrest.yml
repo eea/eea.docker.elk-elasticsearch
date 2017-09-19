@@ -16,31 +16,32 @@ readonlyrest:
     - name: Accept all requests from localhost
       type: allow
       hosts: [127.0.0.1, localhost]
-      #verbosity: info
+      verbosity: error
 
     - name: Check_mk
       type: allow
       hosts: [CHECKHEALTH]
       actions: ["cluster:monitor/health"]
+      verbosity: error
 
     - name: Logstash RW
       auth_key: LOGSTASH_RW_USERNAME:LOGSTASH_RW_PASSWORD
       type: allow
       hosts: [172.0.0.0/6]
       #hosts: [172.17.0.0/16]
-      #verbosity: info
+      verbosity: error
 
     - name: Kibana RW
       auth_key: KIBANA_RW_USERNAME:KIBANA_RW_PASSWORD
       type: allow
       hosts: [192.168.0.0/16]
       indices: [".kibana"]
-      #verbosity: info
+      verbosity: error
 
     - name: Kibana RO
       #-RO-auth_key: KIBANA_RO_USERNAME:KIBANA_RO_PASSWORD
       type: allow
       kibana_access: ro_strict
       #indices: [".kibana"]
-      #verbosity: info
+      verbosity: error
       #hosts: [10.92.27.135]
