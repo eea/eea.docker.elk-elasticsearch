@@ -1,4 +1,4 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:5.4.1
+FROM docker.elastic.co/elasticsearch/elasticsearch:5.6.3
 
 MAINTAINER michimau <mauro.michielon@eea.europa.eu>
 
