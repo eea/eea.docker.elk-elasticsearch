@@ -1,10 +1,8 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:6.1.0
+FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.0
 
 MAINTAINER michimau <mauro.michielon@eea.europa.eu>
 
-RUN /usr/share/elasticsearch/bin/elasticsearch-plugin remove x-pack
-
-COPY readonlyrest-1.16.14_es6.1.0.zip ./readonlyrest.zip
+COPY readonlyrest-1.16.15_es6.1.0 ./readonlyrest.zip
 
 COPY /config/elasticsearch.yml /elasticsearch.yml
 COPY /config/readonlyrest.yml /readonlyrest.yml
@@ -14,6 +12,7 @@ COPY docker-entrypoint.sh /
 RUN chmod a+x /docker-entrypoint.sh
 
 RUN yum install -y openssl
+
 USER elasticsearch
 
 EXPOSE 9200 9300
