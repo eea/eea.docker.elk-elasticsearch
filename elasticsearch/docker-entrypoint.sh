@@ -24,8 +24,12 @@ if [[ $ELASTICSEARCH_MASTER = "YES" ]]; then
   mkdir -p /tmp/ssl
   keytool -genkey -keyalg RSA -noprompt -alias $SERVERNAME -dname "CN=$SERVERNAME,OU=IDM,O=EEA,L=IDM1,C=DK" -deststoretype pkcs12 -keystore /tmp/ssl/self.jks -storepass $KIBANA_RW_PASSWORD -keypass $KIBANA_RW_PASSWORD
   keytool -keystore  /tmp/ssl/self.jks -alias $SERVERNAME -export -file  /tmp/ssl/self.cert -srcstorepass $KIBANA_RW_PASSWORD -deststorepass $KIBANA_RW_PASSWORD
-  
-  chmod 400 /tmp/ssl/*
+
+  rm -f /usr/share/elasticsearch/config/self.jks 
+  cp /tmp/ssl/self.jks /usr/share/elasticsearch/config/self.jks
+ 
+  chmod 400 /usr/share/elasticsearch/config/self.jks 
+  #chmod 400 /tmp/ssl/*
 
   #sed "s#CHECKHEALTH#$CHECKHEALTH#g" -i /usr/share/elasticsearch/config/elasticsearch.yml
   sed "s#CHECKHEALTH#$CHECKHEALTH#g" -i /usr/share/elasticsearch/config/readonlyrest.yml

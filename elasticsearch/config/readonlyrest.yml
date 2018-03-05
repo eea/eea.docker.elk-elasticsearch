@@ -2,7 +2,8 @@ readonlyrest:
   enable: true
   ssl:
     enable: true
-    keystore_file: "/tmp/ssl/self.jks"
+#    keystore_file: "/tmp/ssl/self.jks"
+    keystore_file: "self.jks"
     keystore_pass: KIBANA_RW_PASSWORD
     key_pass: KIBANA_RW_PASSWORD
     #allowed_protocols: ["TLSv1.2"]
