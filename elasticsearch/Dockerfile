@@ -2,7 +2,7 @@ FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.2
 
 MAINTAINER michimau <mauro.michielon@eea.europa.eu>
 
-COPY readonlyrest-1.16.16_es6.2.2.zip ./readonlyrest.zip
+COPY readonlyrest-1.16.18_es6.2.2.zip ./readonlyrest.zip
 
 COPY /config/elasticsearch.yml /elasticsearch.yml
 COPY /config/readonlyrest.yml /readonlyrest.yml

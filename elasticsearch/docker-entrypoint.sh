@@ -12,7 +12,6 @@ cp /elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 if [[ $ELASTICSEARCH_MASTER = "YES" ]]; then
 
    cp /readonlyrest.yml /usr/share/elasticsearch/config/readonlyrest.yml 
-#  cat /readonlyrest.yml >> /usr/share/elasticsearch/config/elasticsearch.yml
 
   export TESTREADONLYREST=$(/usr/share/elasticsearch/bin/elasticsearch-plugin list | grep readonlyrest)
   if [[ -z "$TESTREADONLYREST" ]]; then
@@ -29,7 +28,6 @@ if [[ $ELASTICSEARCH_MASTER = "YES" ]]; then
   cp /tmp/ssl/self.jks /usr/share/elasticsearch/config/self.jks
  
   chmod 400 /usr/share/elasticsearch/config/self.jks 
-  #chmod 400 /tmp/ssl/*
 
   #sed "s#CHECKHEALTH#$CHECKHEALTH#g" -i /usr/share/elasticsearch/config/elasticsearch.yml
   sed "s#CHECKHEALTH#$CHECKHEALTH#g" -i /usr/share/elasticsearch/config/readonlyrest.yml
